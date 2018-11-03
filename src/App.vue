@@ -1,12 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
   </div>
 </template>
+
+<script>
+export default {
+  mounted() {
+    this.$store.watch(
+      () => {
+        return this.$store.state.main.currentPage; // could also put a Getter here
+      },
+      (newValue, oldValue) => {
+        console.log(
+          "Transit from " + oldValue + " page to " + newValue + " page."
+        );
+        this.$router.push({ name: newValue });
+      }
+    );
+  }
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -25,5 +41,16 @@
       color: #42b983;
     }
   }
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>
