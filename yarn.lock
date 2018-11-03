@@ -1519,6 +1519,10 @@ camelcase@^4.1.0:
   version "4.1.0"
   resolved "http://registry.npm.taobao.org/camelcase/download/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
 
+camelcase@^5.0.0:
+  version "5.0.0"
+  resolved "http://registry.npm.taobao.org/camelcase/download/camelcase-5.0.0.tgz#03295527d58bd3cd4aa75363f35b2e8d97be2f42"
+
 caniuse-api@^3.0.0:
   version "3.0.0"
   resolved "http://registry.npm.taobao.org/caniuse-api/download/caniuse-api-3.0.0.tgz#5e4d90e2274961d46291997df599e3ed008ee4c0"
@@ -7088,6 +7092,12 @@ vue-loader@^15.4.2:
 vue-router@^3.0.1:
   version "3.0.1"
   resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-3.0.1.tgz#d9b05ad9c7420ba0f626d6500d693e60092cc1e9"
+
+vue-socket.io-extended@^3.1.0:
+  version "3.1.0"
+  resolved "http://registry.npm.taobao.org/vue-socket.io-extended/download/vue-socket.io-extended-3.1.0.tgz#0c1833377f902381c861c43a403a476eee542bc9"
+  dependencies:
+    camelcase "^5.0.0"
 
 vue-style-loader@^4.1.0:
   version "4.1.2"
