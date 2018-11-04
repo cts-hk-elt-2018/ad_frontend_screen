@@ -5,6 +5,7 @@ import Award from "./views/Award.vue";
 import Game from "./views/Game.vue";
 import LuckyDraw from "./views/LuckyDraw.vue";
 import PlayVideo from "./views/PlayVideo.vue";
+import ThankYou from "./views/ThankYou.vue";
 
 Vue.use(Router);
 
@@ -43,6 +44,11 @@ export default new Router({
       path: "/play_video",
       name: "play_video",
       component: PlayVideo
+    },
+    {
+      path: "/thank_you",
+      name: "thank_you",
+      component: ThankYou
     }
   ]
 });
