@@ -13,10 +13,7 @@ export default {
       () => {
         return this.$store.state.main.currentPage; // could also put a Getter here
       },
-      (newValue, oldValue) => {
-        console.log(
-          "Transit from " + oldValue + " page to " + newValue + " page."
-        );
+      newValue => {
         this.$router.push({ name: newValue });
       }
     );
