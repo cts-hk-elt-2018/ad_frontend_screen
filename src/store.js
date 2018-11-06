@@ -13,13 +13,13 @@ const award = {
       state.currentAward = "";
       state.awardees = [];
     },
-    SOCKET_LUCKYDRAW_CURRENT_AWARD(state, currentAward) {
+    SOCKET_AWARD_CURRENT_AWARD(state, currentAward) {
       if (state.currentAward != currentAward) {
         state.currentAward = currentAward;
         state.awardees = [];
       }
     },
-    SOCKET_LUCKYDRAW_AWARDEES(state, awardees) {
+    SOCKET_AWARD_AWARDEES(state, awardees) {
       state.awardees = awardees;
     }
   }
@@ -27,22 +27,27 @@ const award = {
 
 const game = {
   state: {
-    currentQuestion: "",
+    currentQuestion: {
+      question: ""
+    },
     response: []
   },
   mutations: {
     RESET(state) {
       state.currentQuestion = "";
-      state.response = [];
+      state.responses = [];
+    },
+    SOCKET_GAME_EMPTY_RESPONSES(state) {
+      state.responses = [];
     },
     SOCKET_GAME_CURRENT_QUESTION(state, currentQuestion) {
       if (state.currentQuestion != currentQuestion) {
         state.currentQuestion = currentQuestion;
-        state.response = [];
+        state.responses = [];
       }
     },
     SOCKET_GAME_ADD_RESPONSE(state, addedResponse) {
-      state.response.push(addedResponse);
+      state.responses.push(addedResponse);
     }
   }
 };
@@ -59,6 +64,9 @@ const luckyDraw = {
     RESET(state) {
       state.currentGift.name = "Guess what?";
       state.currentGift.imageUrl = "";
+      state.winners = [];
+    },
+    SOCKET_LUCKYDRAW_EMPTY_WINNERS(state) {
       state.winners = [];
     },
     SOCKET_LUCKYDRAW_CURRENT_GIFT(state, currentGift) {
