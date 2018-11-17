@@ -1,5 +1,17 @@
 <template>
-  <div class="about">
-    <h1>Thank you for travelling with Cognizant.</h1>
+  <div class="thankyou">
+    <img class="whole" src="../assets/thankyousign.png" />
   </div>
 </template>
+
+<style lang="scss">
+.whole {
+  width: 100vw;
+  height: 100vh;
+}
+.thankyou {
+  background: white;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
