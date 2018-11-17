@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Welcome"/>
+    <img class="whole" src="../assets/backdrop1.png" />
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
-export default {
-  name: "home",
-  components: {
-    HelloWorld
-  }
-};
-</script>
+<style lang="scss">
+.whole {
+  width: 100vw;
+  height: 100vh;
+}
+.home {
+  background: black;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
