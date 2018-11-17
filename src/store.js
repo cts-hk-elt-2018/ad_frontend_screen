@@ -1,26 +1,49 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { Howl } from "howler";
 
 Vue.use(Vuex);
 
 const award = {
   state: {
     currentAward: "",
-    awardees: []
+    awardee: {
+      lastName: "",
+      firstName: "",
+      staffID: ""
+    }
   },
   mutations: {
     RESET(state) {
       state.currentAward = "";
-      state.awardees = [];
+      state.awardee = {
+        lastName: "",
+        firstName: "",
+        staffID: ""
+      };
+    },
+    SOCKET_AWARD_EMPTY_AWARDEE(state) {
+      state.awardee = {
+        lastName: "",
+        firstName: "",
+        staffID: ""
+      };
     },
     SOCKET_AWARD_CURRENT_AWARD(state, currentAward) {
       if (state.currentAward != currentAward) {
         state.currentAward = currentAward;
-        state.awardees = [];
+        state.awardee = {
+          lastName: "",
+          firstName: "",
+          staffID: ""
+        };
       }
     },
-    SOCKET_AWARD_AWARDEES(state, awardees) {
-      state.awardees = awardees;
+    SOCKET_AWARD_AWARDEE(state, awardee) {
+      console.log(awardee.User);
+      state.awardee.lastName = awardee.User.lastName;
+      state.awardee.firstName = awardee.User.firstName;
+      state.awardee.staffID = awardee.User.username;
     }
   }
 };
@@ -28,17 +51,20 @@ const award = {
 const game = {
   state: {
     currentQuestion: {
-      question: ""
+      question: "Guess what? Let's play tgt!"
     },
-    response: []
+    responses: [],
+    currentResponse: 0
   },
   mutations: {
     RESET(state) {
       state.currentQuestion = "";
       state.responses = [];
+      state.currentResponse = 0;
     },
     SOCKET_GAME_EMPTY_RESPONSES(state) {
       state.responses = [];
+      state.currentResponse = 0;
     },
     SOCKET_GAME_CURRENT_QUESTION(state, currentQuestion) {
       if (state.currentQuestion != currentQuestion) {
@@ -48,6 +74,20 @@ const game = {
     },
     SOCKET_GAME_ADD_RESPONSE(state, addedResponse) {
       state.responses.push(addedResponse);
+    },
+    SOCKET_GAME_NEXT_RESPONSE(state) {
+      if (state.currentResponse < state.responses.length - 1) {
+        state.currentResponse += 1;
+      } else {
+        state.currentResponse = 0;
+      }
+    },
+    SOCKET_GAME_PREVIOUS_RESPONSE(state) {
+      if (state.currentResponse > 0) {
+        state.currentResponse -= 1;
+      } else {
+        state.currentResponse = state.responses.length - 1;
+      }
     }
   }
 };
@@ -145,6 +185,12 @@ const main = {
         context.commit("CHANGE_CURRENT_PAGE", currentPage);
         context.commit("RESET");
       }
+    },
+    socket_playSound(context, soundId) {
+      var sound = new Howl({
+        src: [require("./assets/audio/" + soundId + ".mp3")]
+      });
+      sound.play();
     }
   }
 };
