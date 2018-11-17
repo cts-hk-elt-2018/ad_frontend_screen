@@ -6,6 +6,8 @@ import Game from "./views/Game.vue";
 import LuckyDraw from "./views/LuckyDraw.vue";
 import PlayVideo from "./views/PlayVideo.vue";
 import ThankYou from "./views/ThankYou.vue";
+import BackDrop from "./views/BackDrop.vue";
+import AroundTheWorld from "./views/AroundTheWorld.vue";
 
 Vue.use(Router);
 
@@ -17,13 +19,9 @@ export default new Router({
       component: Home
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: "/backdrop",
+      name: "backdrop",
+      component: BackDrop
     },
     {
       path: "/award",
@@ -49,6 +47,11 @@ export default new Router({
       path: "/thank_you",
       name: "thank_you",
       component: ThankYou
+    },
+    {
+      path: "/around_the_world",
+      name: "around_the_world",
+      component: AroundTheWorld
     }
   ]
 });
