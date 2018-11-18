@@ -34,6 +34,7 @@
 <script>
 import lottie from "vue-lottie";
 import * as animationData from "@/assets/luckyDraw.json";
+import { Howl } from "howler";
 export default {
   components: {
     lottie
@@ -56,10 +57,14 @@ export default {
         if (winners.length > 0) {
           this.animationOn = true;
           this.resultOn = false;
+          var sound = new Howl({
+            src: [require("../assets/audio/4.mp3")]
+          });
+          sound.play();
           setTimeout(() => {
             this.animationOn = false;
             this.resultOn = true;
-          }, 3500);
+          }, 5000);
         }
       },
       {
