@@ -6,9 +6,12 @@
 
 <style lang="scss">
 .whole {
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
 }
-body {
+.backdrop {
   background: black;
+  width: 100vw;
+  height: 100vh;
 }
 </style>
